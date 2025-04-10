@@ -1,0 +1,6 @@
+{
+  "rewrites": [{ "source": "/(.*)", "destination": "/Final/$1" }],
+  "buildCommand": "vite build Final",
+  "outputDirectory": "dist",
+  "installCommand": "npm install"
+}

@@ -1,4 +1,13 @@
 {
+  "name": "cs105-computer-graphics",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite Final",
+    "build": "vite build Final",
+    "preview": "vite preview --outDir dist"
+  },
   "dependencies": {
     "invert-color": "^2.0.0",
     "three": "^0.154.0",
