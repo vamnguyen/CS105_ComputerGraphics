@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/uit_logo-d98e4e21.png" />
+
+	<title>CS105 - Computer Graphics</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;500;600;700&family=Inter:wght@200;300;400;500;700&family=Roboto:wght@300;400;500;700&display=swap"
+		rel="stylesheet" />
+	
+	<link rel="shortcut icon" type="image/x-icon" href="/assets/uit_logo-d98e4e21.png" />
+  <script type="module" crossorigin src="/assets/index-97c9bfbd.js"></script>
+  <link rel="stylesheet" href="/assets/index-9b6c9e93.css">
+</head>
+
+<body>
+	<!-- MAIN APPLICATION -->
+	<div class="container">
+		<nav class="nav">
+			<div class="title-mini">
+				CS105 Computer Graphics - MSSV: 22520880 - Nguyễn Viết Anh Minh
+			</div>
+		</nav>
+		<div class="reset">
+			<img src="/assets/reset-bb2cfe51.svg" alt="Reset" name="reset" class="icon-reset" />
+		</div>
+		<nav class="tool-bar">
+			<div class="tool">
+				<img src="/assets/translate-d9dea9f7.svg" alt="Translate" name="translate" class="icon-tool transform" />
+			</div>
+
+			<div class="tool">
+				<img src="/assets/rotate-28ec5871.svg" alt="Rotate" name="rotate" class="icon-tool transform" />
+			</div>
+
+			<div class="tool">
+				<img src="/assets/scale-9d95eab6.svg" alt="Scale" name="scale" class="icon-tool transform" />
+			</div>
+
+			<div class="tool">
+				<img src="/assets/light-808925cf.svg" alt="Light" name="light" class="icon-tool normal" />
+			</div>
+
+			<div class="tool">
+				<img src="/assets/object-39fa8b64.svg" alt="Geometry" name="geometry" class="icon-tool normal" />
+			</div>
+
+			<div class="tool">
+				<img src="/assets/surface-fc42614e.svg" alt="Material" name="material" class="icon-tool normal" />
+			</div>
+
+			<div class="tool">
+				<img src="/assets/animation-6baa7832.svg" alt="Animation" name="animation" class="icon-tool normal" />
+			</div>
+
+			<div class="tool">
+				<img src="/assets/camera-ac164ef1.svg" alt="Camera" name="camera" class="icon-tool normal cr" />
+			</div>
+
+			<div class="tool">
+				<img src="/assets/color-12596a2b.svg" alt="Color" name="color" class="icon-tool cl" />
+			</div>
+			<div class="tool">
+				<img src="/assets/music-32d50783.svg" alt="Music" name="music" class="icon-tool music" />
+			</div>
+		</nav>
+		<div class="tool-tip"></div>
+		<div class="container-add">
+			<div class="tool-add-sub-option">
+				<div class="top">
+					<img src="/assets/maths-a6eb2b40.svg" alt="Add-Sub" name="add-sub" class="icon-add-sub main" />
+					<img src="/assets/add-6277698b.svg" alt="Add" name="add" class="icon-add-sub add" />
+				</div>
+				<div class="bottom">
+					<img src="/assets/minus-dfe69e91.svg" alt="Remove" name="remove" class="icon-add-sub remove" />
+				</div>
+			</div>
+		</div>
+		<div class="subtool geometry-option">
+			<ul>
+				<div class="option">
+					<img src="/assets/cube-a6f8bb14.svg" alt="Cube" name="cube" class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/sphere-fb6d432b.svg" alt="Sphere" name="sphere" class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/cone-54f6ec00.svg" alt="Cone" name="cone" class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/cylinder-e2f35e9b.svg" alt="Cylinder" name="cylinder" class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/torus-a5cd0dbe.svg" alt="Torus" name="torus" class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/torus_knot-9cb9afe2.svg" alt="Torus Knot" name="torus knot" class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/teapot-b10e78cc.svg" alt="Teapot" name="teapot" class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/tubecurve-ba67103e.svg" alt="Tube" name="tube" class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/tetrahedron-7b568301.svg" alt="Tetrahedron" name="tetrahedron" class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/octahedron-removebg-preview-2cf9617a.svg" alt="Octahedron" name="octahedron"
+						class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/dodecahedron-5aee8af6.svg" alt="Dodecahedron" name="dodecahedron" class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/icosahedron-removebg-preview-210a08a4.svg" alt="Icosahedron" name="icosahedron"
+						class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/heart-bfdeefe0.svg" alt="Heart" name="heart" class="sub-icon geometry" />
+				</div>
+				<div class="option">
+					<img src="/assets/cone-54f6ec00.svg" alt="Pyramid" name="pyramid" class="sub-icon geometry pyramid" />
+				</div>
+				<div class="option">
+					<img src="/assets/cylinder-e2f35e9b.svg" alt="Prism" name="prism" class="sub-icon geometry prism" />
+				</div>
+			</ul>
+		</div>
+		<div class="subtool material-option">
+			<div class="option">
+				<img src="/assets/solid-0166e09f.svg" alt="Solid" name="solid" class="sub-icon material" />
+			</div>
+			<div class="option">
+				<img src="/assets/point-d4b2aba6.svg" alt="Point" name="point" class="sub-icon material" />
+			</div>
+			<div class="option">
+				<img src="/assets/line-bfed1b46.svg" alt="Line" name="line" class="sub-icon material" />
+			</div>
+			<div class="option">
+				<img src="/assets/normal-0300dcd0.svg" alt="Normal" name="normal" class="sub-icon material" />
+			</div>
+			<div class="option">
+				<img src="/assets/phong-ff7b9a85.svg" alt="Phong" name="phong" class="sub-icon material" />
+			</div>
+			<label class="option" for="upload">
+				<img src="/assets/texture-3a6610a8.svg" alt="Texture Uploaded" name="texture uploaded" class="sub-icon material texture"
+					aria-hidden="true" />
+				<input type="file" class="input-uploaded" id="upload" accept="image/*" />
+			</label>
+		</div>
+		<div class="subtool light-option">
+			<div class="option">
+				<img src="/assets/point_light-d24b3030.svg" alt="Point Light" name="point light" class="sub-icon light" />
+			</div>
+			<div class="option">
+				<img src="/assets/light-808925cf.svg" alt="Directional Light" name="directional light" class="sub-icon light" />
+			</div>
+			<div class="option">
+				<img src="/assets/spotlight-ca77208a.svg" alt="Spot Light" name="spot light" class="sub-icon light" />
+			</div>
+			<div class="option">
+				<img src="/assets/intensity-ea7f1b92.svg" alt="Intensity" name="intensity" class="sub-icon light" />
+			</div>
+			<div class="option">
+				<img src="/assets/distance_light-1205b51b.svg" alt="Distance" name="distance" class="sub-icon light" />
+			</div>
+			<div class="option">
+				<img src="/assets/translate-d9dea9f7.svg" alt="Translate Light" name="translate light" class="sub-icon light" />
+			</div>
+		</div>
+		<div class="subtool camera-option">
+			<div class="option">
+				<img src="/assets/fov-921f59b3.svg" alt="Field of view" name="fov" class="sub-icon camera" />
+			</div>
+			<div class="option">
+				<img src="/assets/zoomin-59ccc8f5.svg" alt="Near" name="near" class="sub-icon camera" />
+			</div>
+			<div class="option">
+				<img src="/assets/zoomout-bfed1d08.svg" alt="Far" name="far" class="sub-icon camera" />
+			</div>
+		</div>
+		<div class="subtool animation-option">
+			<div class="option">Rotation</div>
+			<div class="option">Bouncing</div>
+			<div class="option">Rotate Around</div>
+			<div class="option">In and Out</div>
+			<div class="option">Spiral</div>
+		</div>
+		<div class="wrapper intensity">
+			<div class="slidecontainer">
+				<input type="range" min="0" max="100" value="10" class="slider" id="myRange" name="intensity" />
+			</div>
+			<div class="slide-value"></div>
+		</div>
+		<div class="wrapper distance">
+			<div class="slidecontainer">
+				<input type="range" min="1" max="200" value="10" class="slider" id="myRange" name="distance" />
+			</div>
+			<div class="slide-value"></div>
+		</div>
+		<div class="wrapper camera">
+			<div class="slidecontainer">
+				<input type="range" min="0" max="100" value="10" class="slider" id="myRange" />
+			</div>
+			<div class="slide-value"></div>
+		</div>
+		<div class="subtool color-option">
+			<div class="option">
+				<img src="/assets/cube-a6f8bb14.svg" alt="Object Color" name="object color" class="sub-icon color" />
+			</div>
+			<div class="option">
+				<img src="/assets/light-808925cf.svg" alt="Light Color" name="light color" class="sub-icon color" />
+			</div>
+		</div>
+		<div class="color-picker object">
+			<input type="color" value="#7CFC00" />
+			<div class="color-value"></div>
+		</div>
+		<div class="color-picker light">
+			<input type="color" value="#FFFFFF" />
+			<div class="color-value"></div>
+		</div>
+		<div id="rendering"></div>
+	</div>
+	
+	
+	
+</body>
+
+</html>
