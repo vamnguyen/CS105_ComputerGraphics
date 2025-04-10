@@ -1,0 +1,714 @@
+* {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: transparent;
+  font-family: "Comfortaa", cursive;
+  font-family: "Inter", sans-serif;
+  box-sizing: border-box;
+}
+
+:root {
+  --light-intensity: rgba(128, 128, 128, 0.5);
+  --border-light: 0.75rem;
+  --filter-white: invert(100%) sepia(0%) saturate(0%) hue-rotate(222deg)
+    brightness(104%) contrast(101%);
+  --filter-active: invert(83%) sepia(28%) saturate(1115%) hue-rotate(97deg)
+    brightness(92%) contrast(87%);
+  --color-active: #7cfc00;
+  --reset-top: 9%;
+  --tool-top: 17%;
+  --light-top: 17%;
+  --geometry-top: 30.5%;
+  --material-top: 33%;
+  --animation-top: 48%;
+  --camera-top: 57%;
+  --color-top: 63%;
+  --add-sub-top: 83.5%;
+}
+
+body {
+  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+}
+
+.title-mini {
+  font-size: 18px;
+  color: #e0e0e0;
+  width: 60%;
+  padding-left: 30px;
+  font-family: "Roboto", "Inter";
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+  text-shadow: 0px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  width: auto;
+  padding: 15px 0;
+  position: relative;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.reset {
+  position: absolute;
+  background-color: transparent;
+  top: var(--reset-top);
+  right: 2.25%;
+  transform: translateX(-1px);
+}
+
+.icon-reset {
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  filter: var(--filter-white);
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+}
+
+.icon-reset.not-active {
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+.icon-reset:hover {
+  opacity: 0.6;
+}
+
+.selection {
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  border: none;
+  outline: none;
+}
+
+.selection:hover {
+  background-color: white;
+  color: black;
+}
+
+.btn-add {
+  color: white;
+  font-size: 20px;
+  padding: 10px;
+  width: 200px;
+  text-align: center;
+  outline: none;
+  border: none;
+  transition: all ease-in-out 0.1s;
+}
+
+.btn-add:hover {
+  background-color: white;
+  color: black;
+}
+
+.tool-bar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  padding: 12px;
+  background: rgba(51, 51, 51, 0.8);
+  border-radius: 12px;
+  right: 1.65%;
+  top: var(--tool-top);
+  z-index: 0;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.tool {
+  margin-bottom: 15px;
+  background-color: transparent;
+  display: flex;
+  flex-direction: row;
+  z-index: 0;
+  position: relative;
+}
+
+.tool:last-child {
+  margin-bottom: 0px;
+}
+
+.icon-tool {
+  background-color: transparent;
+  width: 30px;
+  height: 30px;
+  filter: var(--filter-white);
+  transition: all ease-in-out 0.25s;
+  cursor: pointer;
+  z-index: 0;
+}
+
+.icon-tool[name="geometry"] {
+  width: 35px;
+  height: 35px;
+}
+
+.icon-tool:hover {
+  opacity: 50%;
+}
+
+.icon-tool.active {
+  filter: var(--filter-active);
+}
+
+[class^="icon-tool"][class$="not-active"] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.tool-tip {
+  position: absolute;
+  top: 23%;
+  right: 2%;
+  transform: translateX(-62%);
+  text-align: center;
+  background-color: white;
+  width: 80px;
+  color: black;
+  padding: 5px 10px;
+  border-radius: 5px;
+  white-space: nowrap;
+  font-size: 12px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 1000;
+  visibility: hidden;
+  font-family: "Inter";
+}
+
+.tool-tip.geometry {
+  right: 5%;
+  width: 125px;
+}
+
+.tool-tip.light,
+.tool-tip.camera,
+.tool-tip.color,
+.tool-tip.material {
+  right: 3%;
+  width: 125px;
+  transform: translateX(-64%);
+}
+
+.subtool {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  padding-bottom: 5px;
+  position: absolute;
+  background-color: rgba(51, 51, 51, 0.8);
+  border-radius: 8px;
+  transition: all ease-in-out 0.2s;
+  opacity: 0;
+  visibility: hidden;
+  right: 4%;
+  transform: translateX(-43%) translateY(1px);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subtool.geometry-option {
+  top: var(--geometry-top);
+  right: 3.3%;
+}
+
+.subtool.material-option {
+  top: var(--material-top);
+}
+
+.subtool.light-option {
+  top: var(--light-top);
+  right: 3.8%;
+}
+
+.subtool.camera-option {
+  top: var(--camera-top);
+  right: 4%;
+  transform: translateX(-39%) translateY(1px);
+}
+
+.subtool.color-option {
+  top: var(--color-top);
+}
+
+.subtool.animation-option {
+  top: var(--animation-top);
+  right: 1%;
+  transform: translateX(-38%) translateY(4px);
+}
+
+[class$="-option active"] {
+  opacity: 1;
+  visibility: visible;
+  transition: all ease-in-out 0.2s;
+}
+
+[class$="-option"] > .option {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.input-uploaded {
+  display: none;
+}
+
+.option {
+  position: relative;
+  background-color: transparent;
+}
+
+.material-option .option {
+  margin: 4px 0px;
+  padding: 0;
+}
+
+.animation-option .option {
+  color: white;
+  margin: 8px;
+  font-family: "Roboto", "Inter";
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  padding: 6px 12px;
+  border-radius: 4px;
+}
+
+.animation-option .option.active {
+  color: var(--color-active);
+  background-color: rgba(124, 252, 0, 0.1);
+}
+
+.animation-option .option:hover {
+  opacity: 0.8;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.sub-icon {
+  width: 25px;
+  height: 25px;
+  background-color: transparent;
+  margin-bottom: 8px;
+  cursor: pointer;
+  transition: all linear 0.1s;
+  filter: invert(100%) sepia(0%) saturate(0%) hue-rotate(222deg)
+    brightness(104%) contrast(101%);
+}
+
+.sub-icon:hover {
+  opacity: 0.6;
+}
+
+.sub-icon.active {
+  filter: invert(83%) sepia(28%) saturate(1115%) hue-rotate(97deg)
+    brightness(92%) contrast(87%);
+}
+
+.sub-icon.not-active {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0.6;
+}
+
+.subtool.geometry-option {
+  padding: 0;
+}
+
+.subtool.geometry-option ul {
+  height: 210px;
+  background-color: transparent;
+  overflow-y: scroll;
+  white-space: nowrap;
+  padding: 10px;
+}
+
+.subtool.geometry-option ul::-webkit-scrollbar {
+  width: 5px;
+}
+
+.subtool.geometry-option ul::-webkit-scrollbar-track {
+  background: transparent; /* color of the tracking area */
+}
+
+.subtool.geometry-option ul::-webkit-scrollbar-thumb {
+  background-color: transparent; /* color of the scroll thumb */
+  border-radius: 10px; /* roundness of the scroll thumb */
+  border: 3px solid rgba(255, 255, 255, 0.498); /* creates padding around scroll thumb */
+}
+
+.subtool.geometry-option ul .sub-icon {
+  width: 30px;
+  height: 30px;
+  margin-left: 5px;
+}
+
+.subtool.geometry-option ul .sub-icon[alt="Heart"] {
+  margin-bottom: 0;
+}
+
+.subtool.geometry-option ul .sub-icon[name="torus"] {
+  margin-bottom: 0px;
+}
+
+.subtool.geometry-option ul .sub-icon[name="torus knot"] {
+  width: 40px !important;
+  height: 40px !important;
+  transform: translateX(-5px);
+  margin-bottom: 0;
+}
+
+.subtool.geometry-option ul .sub-icon[name="teapot"] {
+  width: 32px !important;
+  height: 32px !important;
+  margin-bottom: 5px;
+}
+
+.subtool.geometry-option ul .sub-icon[name="octahedron"] {
+  width: 27px;
+  height: 27px;
+  transform: translateX(2px) rotate(-11deg);
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.subtool.geometry-option ul .sub-icon[name="icosahedron"] {
+  width: 28px;
+  height: 28px;
+  transform: translateX(2px) rotate(-21deg);
+  margin-bottom: 12px;
+}
+
+.subtool.geometry-option ul .sub-icon[name="dodecahedron"] {
+  width: 42px;
+  height: 42px;
+  transform: translateX(-6px);
+  margin-bottom: 6px;
+}
+
+.sub-icon[name="texture uploaded"],
+.sub-icon[name="phong"] {
+  width: 22px;
+  height: 22px;
+}
+
+.sub-icon[alt="Light Color"] {
+  margin-bottom: 0;
+}
+
+.sub-icon.not-active {
+  cursor: not-allowed;
+  opacity: 0.3;
+}
+
+.sub-icon.light {
+  margin: 10px 0;
+}
+
+.sub-icon[name="color"] {
+  width: 20px;
+  height: 20px;
+}
+
+.sub-icon[name="translate light"] {
+  margin-bottom: 0px;
+}
+
+.sub-icon[name="distance"] {
+  width: 35px;
+  height: 35px;
+}
+
+.sub-icon[name="field of view"] {
+  width: 30px;
+  height: 30px;
+}
+
+.wrapper {
+  position: absolute;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  transform: translateX(-2px);
+  border-radius: var(--border-light);
+  background-color: var(--light-intensity);
+  visibility: hidden;
+}
+
+.wrapper.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.wrapper.intensity {
+  top: 29.5%;
+  right: 8.8%;
+}
+
+.wrapper.distance {
+  top: 33%;
+  right: 8.8%;
+}
+
+.wrapper.camera {
+  top: 56%;
+  right: 9%;
+  transform: translateX(15px);
+}
+
+.wrapper.camera .slidecontainer {
+  height: 11rem;
+  width: 2.5rem;
+}
+
+.wrapper.camera input {
+  width: 11rem;
+  height: 2.5rem;
+}
+
+.slidecontainer {
+  -webkit-appearance: none; /* Override default CSS styles */
+  appearance: none;
+  position: relative;
+  height: 12rem;
+  width: 2.5rem;
+
+  &::before,
+  &::after {
+    display: block;
+    position: absolute;
+    z-index: 99;
+    color: #fff;
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    line-height: 1;
+    padding: 0.75rem 0;
+    pointer-events: none;
+  }
+
+  &::before {
+    content: "+";
+  }
+
+  &::after {
+    content: "-";
+    bottom: 0;
+  }
+}
+
+input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background-color: var(--light-intensity);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin: 0;
+  padding: 0;
+  width: 12rem;
+  height: 2.5rem;
+  transform: translate(-50%, -50%) rotate(-90deg);
+  border-radius: var(--border-light);
+  overflow: hidden;
+  cursor: row-resize;
+
+  &[step] {
+    background-color: transparent;
+    background-image: repeating-linear-gradient(
+      to right,
+      var(--light-intensity),
+      var(--light-intensity) calc(12.5% - 1px),
+      black 12.5%
+    );
+  }
+
+  &::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 0;
+    box-shadow: -20rem 0 0 20rem var(--light-intensity);
+  }
+
+  &::-moz-range-thumb {
+    border: none;
+    width: 0;
+    box-shadow: -20rem 0 0 20rem var(--light-intensity);
+  }
+}
+
+.color-picker {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  padding: 8px;
+  background-color: rgba(128, 128, 128, 0.5);
+  text-align: center;
+  transition: all 0.2s ease-in-out;
+  opacity: 0;
+  visibility: hidden;
+}
+
+.color-picker.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.color-picker.object {
+  top: 63.2%;
+  right: 8.2%;
+}
+
+.color-picker.light {
+  top: 69.2%;
+  right: 8.2%;
+}
+
+input[type="color"] {
+  -webkit-appearance: none;
+  appearance: none;
+  border: none;
+  width: 80px;
+  height: 20px;
+  padding: 0;
+  z-index: 0;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+  padding: 0;
+}
+input[type="color"]::-webkit-color-swatch {
+  border: none;
+}
+
+.color-value {
+  position: absolute;
+  color: white;
+  background-color: transparent;
+  pointer-events: none;
+  cursor: default;
+  font-size: 14px;
+  text-align: center;
+  font-family: "Comfortaa", "Inter";
+  z-index: 1;
+  transform: translateY(1px);
+}
+
+.slide-value {
+  position: absolute;
+  top: 45%;
+  color: white;
+  background-color: transparent;
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  cursor: default;
+  font-size: 13px;
+  font-family: "Comfortaa", "Inter";
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none;
+  z-index: 0;
+  pointer-events: none;
+  transition: all 1s linear;
+}
+
+.container-add {
+  background-color: transparent;
+  position: absolute;
+  top: var(--add-sub-top);
+  right: 2.25%;
+}
+
+.tool-add-sub-option {
+  background-color: transparent;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.tool-add-sub-option .top,
+.tool-add-sub-option .bottom {
+  background-color: transparent;
+  display: flex;
+  justify-content: end;
+  flex-flow: row-reverse;
+}
+
+.tool-add-sub-option .top {
+  width: 100px;
+}
+
+.tool-add-sub-option .bottom {
+  margin-top: -10px;
+  height: 100px;
+}
+
+.icon-add-sub {
+  width: 35px;
+  height: 35px;
+  background-color: transparent;
+  filter: var(--filter-white);
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+}
+
+.icon-add-sub.main {
+  margin-left: -10px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+.icon-add-sub.main:hover {
+  opacity: 0.6;
+}
+
+.icon-add-sub.main.active {
+  filter: var(--filter-active);
+}
+
+.icon-add-sub.add,
+.icon-add-sub.remove {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.icon-add-sub.add.active,
+.icon-add-sub.remove.active {
+  visibility: visible;
+  opacity: 1;
+}
+
+.icon-add-sub.add.active:hover,
+.icon-add-sub.remove.active:hover {
+  opacity: 0.6;
+}
+
+.icon-add-sub.add.active {
+  transform: translateX(-30px);
+}
+
+.icon-add-sub.remove.active {
+  transform: translateY(30px);
+}
+
+.icon-add-sub.remove.active.not-active {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.subtool.geometry-option ul .sub-icon.pyramid {
+  transform: rotate(180deg);
+}
+
+.subtool.geometry-option ul .sub-icon.prism {
+  transform: rotate(90deg);
+}
