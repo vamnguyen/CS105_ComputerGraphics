@@ -303,3 +303,17 @@ function hideTooltip(event) {
 }
 
 // export { updateCurrentGeometry };
+
+document.querySelector('.sub-icon.color[name="object color"]').addEventListener('click', function() {
+	document.querySelector('.color-picker.object').style.display = 'block';
+  });
+  
+  document.querySelector('.color-picker.object input[type="color"]').addEventListener('input', function(e) {
+	const color = e.target.value;
+	if (window.selectedObject) {
+	  if (window.selectedObject.material && window.selectedObject.material.color) {
+		window.selectedObject.material.color.set(color);
+	  }
+	}
+	document.querySelector('.color-picker.object .color-value').textContent = color;
+  });

@@ -26,9 +26,10 @@
 
 ## [THÔNG TIN VỀ CÁC THÀNH VIÊN NHÓM](#top)
 
-| STT |   MSSV   |      Họ và Tên       |                  Github                   |         Email          |
-| :-: | :------: | :------------------: | :---------------------------------------: | :--------------------: |
-|  1  | 22520880 | Nguyễn Viết Anh Minh | [vamnguyen](https://github.com/vamnguyen) | 22520880@gm.uit.edu.vn |
+| STT |   MSSV   |       Họ và Tên       |                      Github                      |         Email          |
+| :-: | :------: | :-------------------: | :----------------------------------------------: | :--------------------: |
+|  1  | 22520880 | Nguyễn Viết Anh Minh  |    [vamnguyen](https://github.com/vamnguyen)     | 22520880@gm.uit.edu.vn |
+|  2  | 21522245 | Mai Nguyễn Trung Kiên | [kieenef](https://github.com/MaiNguyenTrungKien) | 21522245@gm.uit.edu.vn |
 
 ## [THÔNG TIN FINAL PROJECT](#top)
 
